@@ -1,0 +1,79 @@
+{
+  "name": "focus-mode",
+  "displayName": "Focus Mode",
+  "description": "This extension adds a timer when I toggle it and give me reminder after minutes. This time can be set in this extension.This also hides sidebars during running of extension.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.startTimer",
+                "title": "Start Timer"
+            },
+            {
+                "command": "extension.stopTimer",
+                "title": "Stop Timer"
+            },
+            {
+                "command": "todoList.addTodo",
+                "title": "Add Todo"
+            },
+            {
+                "command": "todoList.deleteTodo",
+                "title": "Delete Todo"
+            }
+        ],
+        "menus": {
+            "commandPalette": [
+                {
+                    "command": "extension.startTimer"
+                },
+                {
+                    "command": "todoList.addTodo"
+                },
+                {
+                    "command": "todoList.deleteTodo"
+                }
+            ]
+        },
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "my-sidebar",
+                    "title": "My Sidebar",
+                    "icon": "resources/icon.svg"
+                }
+            ]
+        },
+        "views": {
+            "my-sidebar": [
+                {
+                    "id": "todoList",
+                    "name": "Todo List"
+                }
+            ]
+        }
+    },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.96.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "eslint": "^9.16.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
